@@ -11,7 +11,19 @@ ApplicationWindow {
     color: "black"
     anchors.fill: parent
 
+    Rectangle {
+      id: videoPreview
+      color: "gray"
+      anchors.left: parent.left
+      anchors.top: parent.top
+      width: parent.width - sideMenuBar.width
+      height: parent.height
+    }
 
+    SideBar {
+      id: sideMenuBar
+      anchors.right: parent.right
+    }
   }
 
 

@@ -4,5 +4,6 @@
         <file>SideBar.qml</file>
         <file>LEDIndicator.qml</file>
         <file>SideBarButton.qml</file>
+        <file>SettingsPanel.qml</file>
     </qresource>
 </RCC>
