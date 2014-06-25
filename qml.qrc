@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>SideBar.qml</file>
+        <file>LEDIndicator.qml</file>
+        <file>SideBarButton.qml</file>
     </qresource>
 </RCC>
