@@ -20,6 +20,15 @@ ApplicationWindow {
       height: parent.height
     }
 
+    SettingsPanel {
+      id: settingsPanel
+      anchors.left: parent.left
+      anchors.top: parent.top
+      width: parent.width - sideMenuBar.width
+      height: parent.height
+      visible: false
+    }
+
     SideBar {
       id: sideMenuBar
       anchors.right: parent.right

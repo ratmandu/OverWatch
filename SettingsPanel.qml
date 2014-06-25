@@ -4,4 +4,6 @@ Rectangle {
   width: parent.width
   height: parent.height
   color: "white"
+
+  visible: false
 }

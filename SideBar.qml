@@ -6,7 +6,8 @@ Rectangle {
   color: "black"
 
   Column {
-    anchors.fill: parent
+    anchors.top: parent.top
+    anchors.right: parent.right
     spacing: 0
 
     SideBarButton {
@@ -23,13 +24,21 @@ Rectangle {
 
       onButtonClick: { if (recordIndicator.isEnabled) recordIndicator.isEnabled = false; else recordIndicator.isEnabled = true }
     }
+  }
+
+
+  Column {
+    anchors.bottom: parent.bottom
+    anchors.left: parent.left
+    spacing: 0
 
     SideBarButton {
       buttonText: "Settings"
 
       onButtonClick: {
         videoPreview.visible = false
-//        videoPreview.anchors.right = videoPreview.parent.left
+        settingsPanel.visible = true
+  //        videoPreview.anchors.right = videoPreview.parent.left
       }
     }
 
@@ -37,9 +46,11 @@ Rectangle {
       buttonText: "Video"
 
       onButtonClick: {
+        settingsPanel.visible = false
         videoPreview.visible = true
-//        videoPreview.anchors.left = videoPreview.parent.left
+  //        videoPreview.anchors.left = videoPreview.parent.left
       }
     }
+
   }
 }
