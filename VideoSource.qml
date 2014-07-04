@@ -1,6 +1,11 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
-Rectangle {
-  width: 100
-  height: 62
+Item {
+  id: videoSource
+  property alias source : cameraSource
+  Camera {
+    id: cameraSource
+    captureMode: Camera.CaptureVideo
+  }
 }

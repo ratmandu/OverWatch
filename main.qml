@@ -13,11 +13,16 @@ ApplicationWindow {
 
     VideoPanel {
       id: videoPreview
+      source: cameraSource.source
 //      color: "gray"
       anchors.left: parent.left
       anchors.top: parent.top
       width: parent.width - sideMenuBar.width
       height: parent.height
+    }
+
+    VideoSource {
+      id: cameraSource
     }
 
     SettingsPanel {
