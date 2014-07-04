@@ -6,5 +6,6 @@
         <file>SideBarButton.qml</file>
         <file>SettingsPanel.qml</file>
         <file>VideoPanel.qml</file>
+        <file>VideoSource.qml</file>
     </qresource>
 </RCC>

@@ -11,9 +11,9 @@ ApplicationWindow {
     color: "black"
     anchors.fill: parent
 
-    Rectangle {
+    VideoPanel {
       id: videoPreview
-      color: "gray"
+//      color: "gray"
       anchors.left: parent.left
       anchors.top: parent.top
       width: parent.width - sideMenuBar.width

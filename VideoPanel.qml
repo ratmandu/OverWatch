@@ -1,6 +1,13 @@
 import QtQuick 2.0
+import QtMultimedia 5.0
 
-Rectangle {
-  width: 100
-  height: 62
+Item {
+  id: videoPanel
+
+  property alias source : viewfinder.source
+
+  VideoOutput {
+    id: viewfinder
+    anchors.fill: parent
+  }
 }
