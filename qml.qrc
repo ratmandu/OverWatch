@@ -7,5 +7,6 @@
         <file>SettingsPanel.qml</file>
         <file>VideoPanel.qml</file>
         <file>VideoSource.qml</file>
+        <file>ToggleButton.qml</file>
     </qresource>
 </RCC>
