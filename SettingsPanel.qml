@@ -7,5 +7,11 @@ Rectangle {
   height: parent.height
   color: "black"
 
+  ToggleButton {
+    id: tButton
+    anchors.centerIn: parent
+    buttonText: "Auto Record"
+  }
+
   visible: false
 }
