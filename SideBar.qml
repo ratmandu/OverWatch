@@ -5,6 +5,8 @@ Rectangle {
   height: parent.height
   color: "black"
 
+  property string storageText: storageManager.checkFreeSpace()
+
   Column {
     anchors.top: parent.top
     anchors.right: parent.right
@@ -24,6 +26,7 @@ Rectangle {
 
       onButtonClick: { if (recordIndicator.isEnabled) recordIndicator.isEnabled = false; else recordIndicator.isEnabled = true }
     }
+
   }
 
 
@@ -31,6 +34,12 @@ Rectangle {
     anchors.bottom: parent.bottom
     anchors.left: parent.left
     spacing: 0
+
+    SideBarIndicator {
+      id: storageIndicator
+      titleText: "Storage"
+      contentText: storageText
+    }
 
     SideBarButton {
       id: settingsButton
@@ -41,17 +50,21 @@ Rectangle {
         settingsPanel.visible = true
         if (settingsButton.buttonText == "Settings") {
           settingsButton.buttonText = "Save"
+          cancelButton.visible = true
         } else if (settingsButton.buttonText == "Save") {
           settingsButton.buttonText = "Settings"
           settingsPanel.saveSettings()
           videoPreview.visible = true;
           settingsPanel.visible = false
+          cancelButton.visible = false
         }
       }
     }
 
     SideBarButton {
-      buttonText: "Video"
+      id: cancelButton
+      buttonText: "Cancel"
+      visible: false
 
       onButtonClick: {
         settingsPanel.visible = false
@@ -59,10 +72,11 @@ Rectangle {
         if (settingsButton.buttonText == "Save") {
           settingsButton.buttonText = "Settings"
           settingsPanel.loadSettings()
+          visible = false
         }
-  //        videoPreview.anchors.left = videoPreview.parent.left
       }
     }
+
 
   }
 }
