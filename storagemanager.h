@@ -1,9 +1,12 @@
 #ifndef STORAGEMANAGER_H
 #define STORAGEMANAGER_H
 
-#include <QObject>
 #include <QDir>
+#include <QFile>
+#include <QObject>
 #include <QDateTime>
+#include <QFileInfo>
+#include <QTextStream>
 
 class StorageManager : public QObject
 {
@@ -11,6 +14,7 @@ class StorageManager : public QObject
 public:
   explicit StorageManager(QObject *parent = 0);
   void checkFolders();
+  double checkFreeSpace();
 
 private:
 

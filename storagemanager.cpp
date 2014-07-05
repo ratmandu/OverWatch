@@ -17,3 +17,10 @@ void StorageManager::checkFolders()
   }
 #endif
 }
+
+double StorageManager::checkFreeSpace()
+{
+#ifdef ANDROID
+
+#endif
+}

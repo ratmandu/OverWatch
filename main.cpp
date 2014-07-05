@@ -1,8 +1,8 @@
+#include <QScreen>
+#include <QQmlContext>
 #include <QApplication>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QQmlContext>
-#include <QScreen>
 
 #include "storagemanager.h"
 #include "settings.h"

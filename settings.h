@@ -1,10 +1,10 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <QDebug>
 #include <QObject>
 #include <QSettings>
 #include <QStandardPaths>
-#include <QDebug>
 
 class Settings : public QObject
 {
