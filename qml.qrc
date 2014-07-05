@@ -10,5 +10,6 @@
         <file>ToggleButton.qml</file>
         <file>SideBarIndicator.qml</file>
         <file>Timers.qml</file>
+        <file>RecordingManager.qml</file>
     </qresource>
 </RCC>
