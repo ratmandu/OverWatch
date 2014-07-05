@@ -45,6 +45,68 @@ Rectangle {
 //      onCheckedChanged: settings.setValue("recordState/LoopRecord", checked)
       checked: settings.getBool("LoopRecord", true)
     }
+
+    Text {
+      font.pixelSize: dp(18)
+      color: "white"
+      text: "Recording time (mins)"
+    }
+
+    Row {
+      spacing: 15
+
+      Slider {
+        id: recordTimeSlider
+        minimumValue: 1
+        maximumValue: 10
+        stepSize: 0.5
+        style: newSlider
+
+        value: settings.value("RecordingTime", 5)
+        onValueChanged: {
+          recordTimeNumber.text = value
+        }
+      }
+
+      Text {
+        id: recordTimeNumber
+        color: "white"
+        font.pixelSize: dp(18)
+        text: settings.value("RecordingTime", 5)
+      }
+    }
+  }
+
+  Component {
+    id: newSlider
+    SliderStyle {
+      groove: Rectangle{
+        implicitHeight: dp(5)
+        implicitWidth: dp(150)
+        radius: 2.5
+        gradient: Gradient {
+          GradientStop { color: "#101010"; position: 0.0 }
+          GradientStop { color: "#303030"; position: 1.0 }
+        }
+
+        border.color: "#505050"
+        border.width: 1
+      }
+
+      handle: Rectangle {
+        implicitHeight: dp(20)
+        implicitWidth: implicitHeight
+        radius: implicitHeight / 2
+
+        gradient: Gradient {
+          GradientStop { color: "#5E99E5"; position: 0.0 }
+          GradientStop { color: "#4778B4"; position: 1.0 }
+        }
+
+        border.width: dp(1);
+        border.color: "#346FFF"
+      }
+    }
   }
 
   Component {
@@ -80,6 +142,11 @@ Rectangle {
   function saveSettings() {
     settings.setBool("LoopRecord", loopRecordSwitch.checked)
     settings.setBool("AutoRecord", autoRecordSwitch.checked)
+  }
+
+  function loadSettings() {
+    loopRecordSwitch.checked = settings.getBool("LoopRecord", true)
+    autoRecordSwitch.checked = settings.getBool("AutoRecord", true)
   }
 }
 

@@ -44,6 +44,8 @@ Rectangle {
         } else if (settingsButton.buttonText == "Save") {
           settingsButton.buttonText = "Settings"
           settingsPanel.saveSettings()
+          videoPreview.visible = true;
+          settingsPanel.visible = false
         }
       }
     }
@@ -54,6 +56,10 @@ Rectangle {
       onButtonClick: {
         settingsPanel.visible = false
         videoPreview.visible = true
+        if (settingsButton.buttonText == "Save") {
+          settingsButton.buttonText = "Settings"
+          settingsPanel.loadSettings()
+        }
   //        videoPreview.anchors.left = videoPreview.parent.left
       }
     }
