@@ -44,4 +44,9 @@ ApplicationWindow {
   }
 
 
+  function dp(dpVal) {
+    var px = Math.round(dpVal * (320/160))
+    console.log(dpVal + " " + px + " ");
+    return px
+  }
 }

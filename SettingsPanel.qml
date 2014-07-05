@@ -16,12 +16,12 @@ Rectangle {
     anchors.left: parent.left
     anchors.topMargin: 20
     anchors.leftMargin: 20
-    columnSpacing: 20
-    rowSpacing: 20
+    columnSpacing: dp(35)
+    rowSpacing: dp(20)
     columns: 2
 
     Text {
-      font.pixelSize: 18
+      font.pixelSize: dp(18)
       color: "white"
       text: "Auto Record"
     }
@@ -34,7 +34,7 @@ Rectangle {
     }
 
     Text {
-      font.pixelSize: 18
+      font.pixelSize: dp(18)
       color: "white"
       text: "Loop Record"
     }
@@ -51,8 +51,8 @@ Rectangle {
     id: newSwitch
     SwitchStyle {
       groove: Rectangle {
-        implicitHeight: 20
-        implicitWidth: 75
+        implicitHeight: dp(20)
+        implicitWidth: dp(75)
         radius: 9
         gradient: Gradient {
           GradientStop { color: "#101010"; position: 0.0 }
@@ -60,11 +60,11 @@ Rectangle {
         }
 
         border.color: "#505050"
-        border.width: 1
+        border.width: dp(1)
       }
       handle: Rectangle {
-        implicitHeight: 20
-        implicitWidth: 40
+        implicitHeight: dp(20)
+        implicitWidth: dp(40)
         radius: 9
         gradient: Gradient {
           GradientStop { color: control.checked ? "#5e99e5" : "#bbbbbb"; position: 0.0 }
@@ -72,7 +72,7 @@ Rectangle {
         }
 
         border.color: control.checked ? "#346fff" : "#606060"
-        border.width: 2
+        border.width: dp(2)
       }
     }
   }
