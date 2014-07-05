@@ -33,12 +33,18 @@ Rectangle {
     spacing: 0
 
     SideBarButton {
+      id: settingsButton
       buttonText: "Settings"
 
       onButtonClick: {
         videoPreview.visible = false
         settingsPanel.visible = true
-  //        videoPreview.anchors.right = videoPreview.parent.left
+        if (settingsButton.buttonText == "Settings") {
+          settingsButton.buttonText = "Save"
+        } else if (settingsButton.buttonText == "Save") {
+          settingsButton.buttonText = "Settings"
+          settingsPanel.saveSettings()
+        }
       }
     }
 

@@ -29,8 +29,8 @@ Rectangle {
     Switch {
       id: autoRecordSwitch
       style: newSwitch
-      checked: settings.value("state/AutoRecord", true)
-      onCheckedChanged: settings.setValue("state/AutoRecord", checked)
+//      onCheckedChanged: settings.setValue("AutoRecord", checked)
+      checked: settings.getBool("AutoRecord", true)
     }
 
     Text {
@@ -42,8 +42,8 @@ Rectangle {
     Switch {
       id: loopRecordSwitch
       style: newSwitch
-      checked: settings.value("state/LoopRecord", true)
-      onCheckedChanged: settings.setValue("state/LoopRecord", checked)
+//      onCheckedChanged: settings.setValue("recordState/LoopRecord", checked)
+      checked: settings.getBool("LoopRecord", true)
     }
   }
 
@@ -76,4 +76,10 @@ Rectangle {
       }
     }
   }
+
+  function saveSettings() {
+    settings.setBool("LoopRecord", loopRecordSwitch.checked)
+    settings.setBool("AutoRecord", autoRecordSwitch.checked)
+  }
 }
+
