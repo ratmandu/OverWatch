@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Rectangle {
   id: buttonRect
-  width: 200
-  height: 60
+  width: 250
+  height: 75
   color: "black"
 
   radius: 4
@@ -29,7 +29,11 @@ Rectangle {
 
   Text {
     color: "white"
-    anchors.centerIn: parent
+    width: (parent.width - indicator.width) - 30
+    font.pointSize: 16
+    anchors.verticalCenter: parent.verticalCenter
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.horizontalCenterOffset: 20
     text: buttonText
     clip: true
   }

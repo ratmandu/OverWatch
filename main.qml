@@ -7,6 +7,9 @@ ApplicationWindow {
   title: qsTr("Hello World")
   color: "black"
 
+  width: 1280
+  height: 800
+
   Rectangle {
     color: "black"
     anchors.fill: parent
