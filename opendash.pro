@@ -3,7 +3,8 @@ TEMPLATE = app
 QT += qml quick widgets multimedia
 
 SOURCES += main.cpp \
-    settings.cpp
+    settings.cpp \
+    storagemanager.cpp
 
 RESOURCES += qml.qrc
 
@@ -19,4 +20,5 @@ OTHER_FILES += \
     android/AndroidManifest.xml
 
 HEADERS += \
-    settings.h
+    settings.h \
+    storagemanager.h
