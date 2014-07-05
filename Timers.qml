@@ -1,6 +1,13 @@
 import QtQuick 2.0
 
-Rectangle {
-  width: 100
-  height: 62
+Component {
+  Timer {
+    id: storageCheckTimer
+    interval: 30000
+    running: true
+    onTriggeredOnStartChanged: {
+      storageManager.checkFreeSpace()
+    }
+  }
+
 }
