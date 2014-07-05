@@ -6,7 +6,7 @@ Component {
     interval: 30000
     running: true
     onTriggeredOnStartChanged: {
-      storageManager.checkFreeSpace()
+      storageManager.checkSpace()
     }
   }
 
