@@ -7,27 +7,43 @@ Rectangle {
   width: parent.width
   height: parent.height
   color: "black"
+  visible: false
 
   Column {
-    ToggleButton {
-      id: tButton
-      buttonText: "Auto Record"
-    }
-    Button {
-      width: 250
-      height: 75
-      checkable: true
+    id: textColumn
+    spacing: 20
+    anchors.left: parent.left
+    anchors.leftMargin: 20
+    anchors.top: parent.top
+    anchors.topMargin: 20
+
+    Text {
+      color: "white"
       text: "Auto Record"
     }
-    Row {
-      spacing: 20
-      Text {
-        text: "Auto Record"
-      }
-      Switch {
-      }
+
+    Text {
+      color: "white"
+      text: "Loop Record"
     }
   }
 
-  visible: false
+  Column {
+    id: inputColumn
+    spacing: 20
+    anchors.left: textColumn.right
+    anchors.leftMargin: 20
+    anchors.top: parent.top
+    anchors.topMargin: 20
+
+    Switch {
+      id: autoRecordSwitch
+    }
+
+    Switch {
+      id: loopRecordSwitch
+      checked: true
+    }
+  }
+
 }
