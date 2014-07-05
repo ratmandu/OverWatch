@@ -8,5 +8,7 @@
         <file>VideoPanel.qml</file>
         <file>VideoSource.qml</file>
         <file>ToggleButton.qml</file>
+        <file>SideBarIndicator.qml</file>
+        <file>Timers.qml</file>
     </qresource>
 </RCC>

@@ -2,6 +2,8 @@ import QtQuick 2.2
 import QtQuick.Controls 1.1
 import QtQuick.Window 2.0
 
+import StorageManager 1.0
+
 ApplicationWindow {
   visible: true
   title: qsTr("Hello World")
@@ -9,6 +11,18 @@ ApplicationWindow {
 
   width: 1280
   height: 800
+
+  property double freeStorage
+  property double totalStorage
+
+  StorageManager {
+    id: storageManager
+    onNewFreeSpaceMeasurement: {
+      freeStorage = freeSpace
+      totalStorage = totalSpace
+      sideMenuBar.storageText = freeStorage.toString() + "/" + totalStorage.toString()
+    }
+  }
 
   Rectangle {
     color: "black"
@@ -43,10 +57,11 @@ ApplicationWindow {
     }
   }
 
+  Timers {
+  }
 
   function dp(dpVal) {
     var px = Math.round(dpVal * (320/160))
-    console.log(dpVal + " " + px + " ");
     return px
   }
 }
