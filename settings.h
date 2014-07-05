@@ -13,7 +13,7 @@ public:
   Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
 
 private:
-  QSettings &_settings;
+  QSettings *_settings;
 
 signals:
 
