@@ -3,8 +3,7 @@
 Settings::Settings(QObject *parent) :
   QObject(parent)
 {
-  _settings = new QSettings(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) + "/OverWatch_Config.ini", QSettings::IniFormat);
-  qDebug() << QStandardPaths::writableLocation(QStandardPaths::ConfigLocation) << _settings->status();
+  _settings = new QSettings("/sdcard/OverWatch/OverWatch_Config.ini", QSettings::IniFormat);
 }
 
 void Settings::setValue(const QString &key, const QVariant &value)

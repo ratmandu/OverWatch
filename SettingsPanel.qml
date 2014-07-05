@@ -142,11 +142,13 @@ Rectangle {
   function saveSettings() {
     settings.setBool("LoopRecord", loopRecordSwitch.checked)
     settings.setBool("AutoRecord", autoRecordSwitch.checked)
+    settings.setValue("RecordingTime", recordTimeSlider.value)
   }
 
   function loadSettings() {
     loopRecordSwitch.checked = settings.getBool("LoopRecord", true)
     autoRecordSwitch.checked = settings.getBool("AutoRecord", true)
+    recordTimeSlider.value = settings.value("RecordingTime", 5)
   }
 }
 
