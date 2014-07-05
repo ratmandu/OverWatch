@@ -64,7 +64,7 @@ Rectangle {
 
         value: settings.value("RecordingTime", 5)
         onValueChanged: {
-          recordTimeNumber.text = value
+          recordTimeNumber.text = value.toString()
         }
       }
 
@@ -73,6 +73,34 @@ Rectangle {
         color: "white"
         font.pixelSize: dp(18)
         text: settings.value("RecordingTime", 5)
+      }
+    }
+
+    Text {
+      font.pixelSize: dp(18)
+      color: "white"
+      text: "Free space to keep"
+    }
+
+    Row {
+      spacing: 15
+
+      Slider {
+        id: freeSpaceSlider
+        minimumValue: 0.5
+        maximumValue: totalStorage
+        stepSize: 0.5
+        style: newSlider
+
+        value: settings.value("SpaceToKeep", 1.5)
+        onValueChanged: freeSpaceNumber.text = value.toString()
+      }
+
+      Text {
+        id: freeSpaceNumber
+        color: "white"
+        font.pixelSize: dp(18)
+        text: settings.value("SpaceToKeep", 1.5)
       }
     }
   }
@@ -143,12 +171,14 @@ Rectangle {
     settings.setBool("LoopRecord", loopRecordSwitch.checked)
     settings.setBool("AutoRecord", autoRecordSwitch.checked)
     settings.setValue("RecordingTime", recordTimeSlider.value)
+    settings.setValue("SpaceToKeep", freeSpaceSlider.value)
   }
 
   function loadSettings() {
     loopRecordSwitch.checked = settings.getBool("LoopRecord", true)
     autoRecordSwitch.checked = settings.getBool("AutoRecord", true)
     recordTimeSlider.value = settings.value("RecordingTime", 5)
+    freeSpaceSlider.value = settings.value("SpaceToKeep", 1.5)
   }
 }
 
