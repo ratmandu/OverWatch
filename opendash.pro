@@ -4,7 +4,8 @@ QT += qml quick widgets multimedia
 
 SOURCES += main.cpp \
     settings.cpp \
-    storagemanager.cpp
+    storagemanager.cpp \
+    camerainfo.cpp
 
 RESOURCES += qml.qrc
 
@@ -21,4 +22,5 @@ OTHER_FILES += \
 
 HEADERS += \
     settings.h \
-    storagemanager.h
+    storagemanager.h \
+    camerainfo.h

@@ -103,6 +103,17 @@ Rectangle {
         text: settings.value("SpaceToKeep", 1.5)
       }
     }
+
+    Text {
+      font.pixelSize: dp(18)
+      color: "white"
+      text: "Recording Resolution"
+    }
+
+    ComboBox {
+      id: resolutionCombo
+      model:
+    }
   }
 
   Component {
