@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.2
+import QtQuick.Layouts 1.1
 import QtQuick.Dialogs 1.2
 
 Rectangle {
@@ -9,41 +10,70 @@ Rectangle {
   color: "black"
   visible: false
 
-  Column {
-    id: textColumn
-    spacing: 20
-    anchors.left: parent.left
-    anchors.leftMargin: 20
+  GridLayout {
+    id: grid
     anchors.top: parent.top
+    anchors.left: parent.left
     anchors.topMargin: 20
+    anchors.leftMargin: 20
+    columnSpacing: 20
+    rowSpacing: 20
+    columns: 2
 
     Text {
+      font.pixelSize: 18
       color: "white"
       text: "Auto Record"
     }
 
-    Text {
-      color: "white"
-      text: "Loop Record"
-    }
-  }
-
-  Column {
-    id: inputColumn
-    spacing: 20
-    anchors.left: textColumn.right
-    anchors.leftMargin: 20
-    anchors.top: parent.top
-    anchors.topMargin: 20
-
     Switch {
       id: autoRecordSwitch
+      style: newSwitch
+      checked: settings.value("state/AutoRecord", true)
+      onCheckedChanged: settings.setValue("state/AutoRecord", checked)
+    }
+
+    Text {
+      font.pixelSize: 18
+      color: "white"
+      text: "Loop Record"
     }
 
     Switch {
       id: loopRecordSwitch
-      checked: true
+      style: newSwitch
+      checked: settings.value("state/LoopRecord", true)
+      onCheckedChanged: settings.setValue("state/LoopRecord", checked)
     }
   }
 
+  Component {
+    id: newSwitch
+    SwitchStyle {
+      groove: Rectangle {
+        implicitHeight: 20
+        implicitWidth: 75
+        radius: 9
+        gradient: Gradient {
+          GradientStop { color: "#101010"; position: 0.0 }
+          GradientStop { color: "#303030"; position: 1.0 }
+        }
+
+        border.color: "#505050"
+        border.width: 1
+      }
+      handle: Rectangle {
+        implicitHeight: 20
+        implicitWidth: 40
+        radius: 9
+        gradient: Gradient {
+          GradientStop { color: control.checked ? "#5e99e5" : "#bbbbbb"; position: 0.0 }
+          GradientStop { color: control.checked ? "#4778b4" : "#888888"; position: 1.0 }
+        }
+
+        border.color: control.checked ? "#346fff" : "#606060"
+        border.width: 2
+      }
+    }
+  }
 }
