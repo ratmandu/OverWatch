@@ -20,10 +20,6 @@ Item {
     id: cameraSelector
     cameraObject: cameraSource
     selectedCameraDevice: settings.getInt("RecordingCamera", 0)
-    onCameraSelected: {
-      cameraSource.stop()
-      cameraSource.start()
-    }
   }
 
 }
