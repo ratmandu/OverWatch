@@ -248,7 +248,8 @@ Rectangle {
 
     cameraSource.source.stop()
     cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
-//    cameraSource.videoRecorder.resolution = resolutionCombo.currentText
+    cameraSource.source.videoRecorder.resolution = resolutionCombo.currentText
+    cameraSource.source.videoRecorder.frameRate = 30
     cameraSource.source.start()
   }
 

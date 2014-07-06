@@ -13,7 +13,7 @@ Item {
     id: cameraSource
     captureMode: Camera.CaptureVideo
 
-
+    videoRecorder.resolution: "1920x1080"
   }
 
   CameraSelector {
