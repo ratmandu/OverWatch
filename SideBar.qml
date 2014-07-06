@@ -14,19 +14,9 @@ Rectangle {
 
     SideBarButton {
       buttonText: "Recording"
-
-      LEDIndicator {
-        id: recordIndicator
-        isEnabled: true
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.topMargin: 5
-        anchors.leftMargin: 5
-      }
-
-      onButtonClick: { if (recordIndicator.isEnabled) recordIndicator.isEnabled = false; else recordIndicator.isEnabled = true }
+      isToggleButton: true
+      colorBase: "red"
     }
-
   }
 
 

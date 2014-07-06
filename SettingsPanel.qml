@@ -120,6 +120,19 @@ Rectangle {
     Text {
       font.pixelSize: dp(18)
       color: "white"
+      text: "Recording Framerate"
+    }
+
+    ComboBox {
+      id: frameRateCombo
+      currentIndex: settings.getInt("Recording Framerate", 0)
+      model: ["30", "20"]
+      style: newComboBox
+    }
+
+    Text {
+      font.pixelSize: dp(18)
+      color: "white"
       text: "Recording Camera"
     }
 
@@ -245,11 +258,12 @@ Rectangle {
     settings.setValue("SpaceToKeep", freeSpaceSlider.value)
     settings.setInt("RecordingResolution", resolutionCombo.currentIndex)
     settings.setInt("RecordingCamera", recordingCombo.currentIndex)
+    settings.setInt("RecordingFramerate", frameRateCombo.currentIndex)
 
     cameraSource.source.stop()
     cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
     cameraSource.source.videoRecorder.resolution = resolutionCombo.currentText
-    cameraSource.source.videoRecorder.frameRate = 30
+    cameraSource.source.videoRecorder.frameRate = frameRateCombo.currentText
     cameraSource.source.start()
   }
 
@@ -260,6 +274,7 @@ Rectangle {
     freeSpaceSlider.value = settings.value("SpaceToKeep", 1.5)
     resolutionCombo.currentIndex = settings.getInt("RecordingResolution", 3)
     recordingCombo.currentIndex = settings.getInt("RecordingCamera", 0)
+    frameRateCombo.currentIndex = settings.getInt("RecordingFramerate", 0)
   }
 }
 
