@@ -31,3 +31,15 @@ bool Settings::getBool(const QString &key, const bool &defaultValue) const
   _settings->sync();
   return _settings->value(key, defaultValue).toBool();
 }
+
+void Settings::setInt(const QString &key, const int &value)
+{
+  _settings->setValue(key, value);
+  _settings->sync();
+}
+
+int Settings::getInt(const QString &key, const int &defaultValue) const
+{
+  _settings->sync();
+  return _settings->value(key, defaultValue).toInt();
+}

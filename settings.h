@@ -15,6 +15,8 @@ public:
   Q_INVOKABLE QVariant value(const QString &key, const QVariant &defaultValue = QVariant()) const;
   Q_INVOKABLE void setBool(const QString &key, const bool &value);
   Q_INVOKABLE bool getBool(const QString &key, const bool &defaultValue = false) const;
+  Q_INVOKABLE void setInt(const QString &key, const int &value);
+  Q_INVOKABLE int getInt(const QString &key, const int &defaultValue = 0) const;
 
 private:
   QSettings *_settings;

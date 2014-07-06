@@ -112,7 +112,67 @@ Rectangle {
 
     ComboBox {
       id: resolutionCombo
-      model: cameraSource.source.videoRecorder.resolution
+      currentIndex: settings.getInt("RecordingResolution", 3)
+      model: ["320x240", "640x480", "1280x720", "1920x1080"]
+      style: newComboBox
+    }
+
+    Text {
+      font.pixelSize: dp(18)
+      color: "white"
+      text: "Recording Camera"
+    }
+
+    ComboBox {
+      id: recordingCombo
+      currentIndex: settings.getInt("RecordingCamera", 0)
+      model: ["Rear Camera", "Front Camera"]
+      style: newComboBox
+    }
+  }
+
+  Component {
+    id: newComboBox
+    ComboBoxStyle {
+      background: Rectangle {
+        implicitHeight: dp(21)
+        implicitWidth: dp(150)
+        radius: 4
+
+        gradient: Gradient {
+          GradientStop { color: "#eeeeee"; position: 0.0 }
+          GradientStop { color: "#aaaaaa"; position: 1.0 }
+        }
+
+        border.color: "#606060"
+        border.width: dp(1)
+
+        Rectangle {
+          id: glyph
+          width: dp(10)
+          height: dp(10)
+          anchors.verticalCenter: parent.verticalCenter
+          anchors.right: parent.right
+          anchors.rightMargin: 10
+          radius: dp(5)
+
+          gradient: Gradient {
+            GradientStop { color: "#5E99E5"; position: 0.0 }
+            GradientStop { color: "#4778B4"; position: 1.0 }
+          }
+        }
+
+      }
+
+      label: Label {
+        verticalAlignment: Qt.AlignVCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 5
+        text: control.currentText
+        color: "black"
+        anchors.fill: parent
+        font.pixelSize: dp(19)
+      }
     }
   }
 
@@ -183,6 +243,8 @@ Rectangle {
     settings.setBool("AutoRecord", autoRecordSwitch.checked)
     settings.setValue("RecordingTime", recordTimeSlider.value)
     settings.setValue("SpaceToKeep", freeSpaceSlider.value)
+    settings.setInt("RecordingResolution", resolutionCombo.currentIndex)
+    settings.setInt("RecordingCamera", recordingCombo.currentIndex)
   }
 
   function loadSettings() {
@@ -190,6 +252,8 @@ Rectangle {
     autoRecordSwitch.checked = settings.getBool("AutoRecord", true)
     recordTimeSlider.value = settings.value("RecordingTime", 5)
     freeSpaceSlider.value = settings.value("SpaceToKeep", 1.5)
+    resolutionCombo.currentIndex = settings.getInt("RecordingResolution", 3)
+    recordingCombo.currentIndex = settings.getInt("RecordingCamera", 0)
   }
 }
 
