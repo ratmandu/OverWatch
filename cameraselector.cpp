@@ -9,7 +9,6 @@ void CameraSelector::setCameraObject(QObject *cam)
 {
     // get the QCamera from the declarative camera's mediaObject property.
     m_camera = qvariant_cast<QCamera*>(cam->property("mediaObject"));
-    QMediaRecorder rec(m_camera);
 
     // get the video device selector control
     QMediaService *service = m_camera->service();
