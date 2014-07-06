@@ -245,6 +245,11 @@ Rectangle {
     settings.setValue("SpaceToKeep", freeSpaceSlider.value)
     settings.setInt("RecordingResolution", resolutionCombo.currentIndex)
     settings.setInt("RecordingCamera", recordingCombo.currentIndex)
+
+    cameraSource.source.stop()
+    cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
+    cameraSource.videoRecorder.resolution = resolutionCombo.currentText
+    cameraSource.source.start()
   }
 
   function loadSettings() {

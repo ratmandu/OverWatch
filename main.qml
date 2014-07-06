@@ -3,6 +3,7 @@ import QtQuick.Window 2.0
 import QtQuick.Controls 1.1
 
 import StorageManager 1.0
+import CameraSelector 1.0
 
 ApplicationWindow {
   visible: true
