@@ -112,7 +112,7 @@ Rectangle {
 
     ComboBox {
       id: resolutionCombo
-      model:
+      model: cameraSource.source.videoRecorder.resolution
     }
   }
 
