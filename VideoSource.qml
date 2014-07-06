@@ -30,6 +30,12 @@ Item {
       if (settings.getInt("RecordingFramerate", 0) == 1)
         20
     }
+
+    videoRecorder.audioChannels: 2
+    videoRecorder.audioBitRate: 128000
+    videoRecorder.audioEncodingMode: CameraRecorder.ConstantQualityEncoding
+    videoRecorder.videoEncodingMode: CameraRecorder.ConstantQualityEncoding
+    videoRecorder.outputLocation: "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
   }
 
   CameraSelector {

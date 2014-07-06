@@ -10,12 +10,23 @@ Rectangle {
   Column {
     anchors.top: parent.top
     anchors.right: parent.right
-    spacing: 0
+    spacing: 5
 
     SideBarButton {
       buttonText: "Recording"
       isToggleButton: true
       colorBase: "red"
+
+      onButtonCheckedChanged: {
+        if (isChecked) {
+          cameraSource.source.videoRecorder.outputLocation = "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
+          cameraSource.source.videoRecorder.record()
+        } else {
+          cameraSource.source.videoRecorder.stop()
+          cameraSource.source.stop()
+          cameraSource.source.start()
+        }
+      }
     }
   }
 
@@ -23,7 +34,7 @@ Rectangle {
   Column {
     anchors.bottom: parent.bottom
     anchors.left: parent.left
-    spacing: 0
+    spacing: 5
 
     SideBarIndicator {
       id: storageIndicator
