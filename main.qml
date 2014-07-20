@@ -41,6 +41,8 @@ ApplicationWindow {
 
     VideoSource {
       id: cameraSource
+
+
     }
 
     SettingsPanel {
@@ -59,10 +61,36 @@ ApplicationWindow {
   }
 
   Timers {
+    id: timers
+  }
+
+  function stopRecording() {
+    cameraSource.source.videoRecorder.stop()
+    cameraSource.source.stop()
+    sideMenuBar.recordingButton.isChecked = false
+    timers.loopTimer.stop()
+    timers.storageTimer.stop()
+    cameraSource.source.start()
+  }
+
+  function startRecording() {
+    cameraSource.source.videoRecorder.outputLocation = "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
+    cameraSource.source.videoRecorder.record()
+    sideMenuBar.recordingButton.isChecked = true
+    timers.storageTimer.start()
+    if (settings.getBool("LoopRecording", true)) {
+      timers.loopTimer.start()
+    }
+  }
+
+  function restartRecording() {
+    cameraSource.source.videoRecorder.stop()
+    startRecording()
   }
 
   function dp(dpVal) {
     var px = Math.round(dpVal * (320/160))
     return px
   }
+
 }

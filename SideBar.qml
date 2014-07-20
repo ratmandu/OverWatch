@@ -6,6 +6,7 @@ Rectangle {
   color: "black"
 
   property string storageText: storageManager.checkFreeSpace()
+  property alias recordingButton: recordingButton
 
   Column {
     anchors.top: parent.top
@@ -13,18 +14,21 @@ Rectangle {
     spacing: 5
 
     SideBarButton {
+      id: recordingButton
       buttonText: "Recording"
       isToggleButton: true
       colorBase: "red"
-
+      isChecked: (cameraSource.source.videoRecorder.recorderState == cameraSource.source.videoRecorder.RecordingState)
       onButtonCheckedChanged: {
         if (isChecked) {
-          cameraSource.source.videoRecorder.outputLocation = "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
-          cameraSource.source.videoRecorder.record()
+//          cameraSource.source.videoRecorder.outputLocation = "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
+//          cameraSource.source.videoRecorder.record()
+          startRecording()
         } else {
-          cameraSource.source.videoRecorder.stop()
-          cameraSource.source.stop()
-          cameraSource.source.start()
+//          cameraSource.source.videoRecorder.stop()
+//          cameraSource.source.stop()
+//          cameraSource.source.start()
+          stopRecording()
         }
       }
     }

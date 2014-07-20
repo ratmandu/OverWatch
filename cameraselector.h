@@ -17,10 +17,11 @@ private:
 
 public:
   explicit CameraSelector(QObject *parent = 0);
-  void setSelectedCameraDevice(int cameraId);
+  Q_INVOKABLE void setSelectedCameraDevice(int cameraId);
   void setCameraObject(QObject *cam);
   QObject* getCameraObject();
   int getSelectedCameraDevice();
+  Q_INVOKABLE void waitForCameraStart();
 
 signals:
   void cameraSelected();

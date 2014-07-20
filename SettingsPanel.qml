@@ -30,7 +30,7 @@ Rectangle {
       id: autoRecordSwitch
       style: newSwitch
 //      onCheckedChanged: settings.setValue("AutoRecord", checked)
-      checked: settings.getBool("AutoRecord", true)
+      checked: settings.getBool("AutoRecord", false)
     }
 
     Text {
@@ -139,7 +139,7 @@ Rectangle {
     ComboBox {
       id: recordingCombo
       currentIndex: settings.getInt("RecordingCamera", 0)
-      model: ["Rear Camera", "Front Camera"]
+      model: ["Rear Camera"]//, "Front Camera"]
       style: newComboBox
     }
   }
@@ -252,16 +252,17 @@ Rectangle {
   }
 
   function saveSettings() {
+    cameraSource.source.stop()
     settings.setBool("LoopRecord", loopRecordSwitch.checked)
     settings.setBool("AutoRecord", autoRecordSwitch.checked)
     settings.setValue("RecordingTime", recordTimeSlider.value)
     settings.setValue("SpaceToKeep", freeSpaceSlider.value)
     settings.setInt("RecordingResolution", resolutionCombo.currentIndex)
-    settings.setInt("RecordingCamera", recordingCombo.currentIndex)
+    settings.setInt("RecordingCamera", 0)
     settings.setInt("RecordingFramerate", frameRateCombo.currentIndex)
 
-    cameraSource.source.stop()
-    cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
+//    cameraSource.selector.setSelectedCameraDevice(recordingCombo.currentIndex)
+//    cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
     cameraSource.source.videoRecorder.resolution = resolutionCombo.currentText
     cameraSource.source.videoRecorder.frameRate = frameRateCombo.currentText
     cameraSource.source.start()
@@ -269,11 +270,11 @@ Rectangle {
 
   function loadSettings() {
     loopRecordSwitch.checked = settings.getBool("LoopRecord", true)
-    autoRecordSwitch.checked = settings.getBool("AutoRecord", true)
+    autoRecordSwitch.checked = settings.getBool("AutoRecord", false)
     recordTimeSlider.value = settings.value("RecordingTime", 5)
     freeSpaceSlider.value = settings.value("SpaceToKeep", 1.5)
     resolutionCombo.currentIndex = settings.getInt("RecordingResolution", 3)
-    recordingCombo.currentIndex = settings.getInt("RecordingCamera", 0)
+//    recordingCombo.currentIndex = settings.getInt("RecordingCamera", 0)
     frameRateCombo.currentIndex = settings.getInt("RecordingFramerate", 0)
   }
 }

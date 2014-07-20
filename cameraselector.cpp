@@ -27,10 +27,19 @@ void CameraSelector::setSelectedCameraDevice(int cameraId)
 
     m_deviceSelector->setSelectedDevice(cameraId);
 
+    while (m_deviceSelector->selectedDevice() != cameraId);
+
+    m_camera->load();
+
     emit cameraSelected();
 }
 
 int CameraSelector::getSelectedCameraDevice()
 {
   return m_deviceSelector->selectedDevice();
+}
+
+void CameraSelector::waitForCameraStart()
+{
+  while (m_camera->state() != m_camera->ActiveState);
 }
