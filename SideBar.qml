@@ -54,6 +54,7 @@ Rectangle {
         videoPreview.visible = false
         settingsPanel.visible = true
         if (settingsButton.buttonText == "Settings") {
+          stopRecording()
           settingsButton.buttonText = "Save"
           cancelButton.visible = true
         } else if (settingsButton.buttonText == "Save") {

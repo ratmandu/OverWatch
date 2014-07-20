@@ -4,6 +4,7 @@ Item {
 
   property alias storageTimer: storageCheckTimer
   property alias loopTimer: loopRecordingTimer
+  property alias recordStartTimer: recordingStartTimer
 
   Timer {
     id: storageCheckTimer
@@ -30,12 +31,14 @@ Item {
 
   Timer {
     id: recordingStartTimer
-    interval: 2500
+    interval: 1500
     running: true
     repeat: false
 
     onTriggered: {
-      startRecording()
+      if (settings.getBool("AutoRecord", false)) {
+        startRecording()
+      }
     }
   }
 

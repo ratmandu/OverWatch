@@ -5,7 +5,7 @@ Item {
   id: videoPanel
 
   property alias source : viewfinder.source
-
+  property alias viewFinder: viewfinder
   VideoOutput {
     id: viewfinder
     anchors.fill: parent

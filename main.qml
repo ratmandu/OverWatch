@@ -66,15 +66,17 @@ ApplicationWindow {
 
   function stopRecording() {
     cameraSource.source.videoRecorder.stop()
-    cameraSource.source.stop()
     sideMenuBar.recordingButton.isChecked = false
+    cameraSource.source.stop()
+    cameraSource.source.start()
     timers.loopTimer.stop()
     timers.storageTimer.stop()
-    cameraSource.source.start()
   }
 
   function startRecording() {
     cameraSource.source.videoRecorder.outputLocation = "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
+    cameraSource.source.videoRecorder.resolution = settingsPanel.recordingResolution.currentText.toString()
+    cameraSource.source.videoRecorder.frameRate = settingsPanel.recordingFramerate.currentText
     cameraSource.source.videoRecorder.record()
     sideMenuBar.recordingButton.isChecked = true
     timers.storageTimer.start()

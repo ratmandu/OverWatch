@@ -10,6 +10,9 @@ Rectangle {
   color: "black"
   visible: false
 
+  property alias recordingResolution: resolutionCombo
+  property alias recordingFramerate: frameRateCombo
+
   GridLayout {
     id: grid
     anchors.top: parent.top
@@ -252,7 +255,6 @@ Rectangle {
   }
 
   function saveSettings() {
-    cameraSource.source.stop()
     settings.setBool("LoopRecord", loopRecordSwitch.checked)
     settings.setBool("AutoRecord", autoRecordSwitch.checked)
     settings.setValue("RecordingTime", recordTimeSlider.value)
@@ -263,9 +265,9 @@ Rectangle {
 
 //    cameraSource.selector.setSelectedCameraDevice(recordingCombo.currentIndex)
 //    cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
-    cameraSource.source.videoRecorder.resolution = resolutionCombo.currentText
-    cameraSource.source.videoRecorder.frameRate = frameRateCombo.currentText
     cameraSource.source.start()
+    timers.recordStartTimer.start()
+//    recordingStartTimer.start()
   }
 
   function loadSettings() {
