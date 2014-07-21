@@ -1,9 +1,10 @@
 import QtQuick 2.2
 import QtQuick.Window 2.0
 import QtQuick.Controls 1.1
+import QtQml 2.2
 
 import StorageManager 1.0
-import CameraSelector 1.0
+//import CameraSelector 1.0
 
 ApplicationWindow {
   visible: true
@@ -15,6 +16,22 @@ ApplicationWindow {
 
   property double freeStorage
   property double totalStorage
+
+  Connections {
+    target: Qt.application
+    onStateChanged: {
+      console.log("State Changed: " + Qt.application.state)
+      if (Qt.application.state == Qt.ApplicationActive) {
+        startCamera()
+        timers.recordStartTimer.start()
+      }
+
+      if (Qt.application.state == Qt.ApplicationSuspended || Qt.application.state == Qt.ApplicationHidden || Qt.application.state == Qt.ApplicationInactive) {
+        stopRecording()
+        stopCamera()
+      }
+    }
+  }
 
   StorageManager {
     id: storageManager
@@ -88,6 +105,14 @@ ApplicationWindow {
   function restartRecording() {
     cameraSource.source.videoRecorder.stop()
     startRecording()
+  }
+
+  function stopCamera() {
+    cameraSource.source.stop()
+  }
+
+  function startCamera() {
+    cameraSource.source.start()
   }
 
   function dp(dpVal) {

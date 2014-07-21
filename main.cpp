@@ -5,7 +5,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "cameraselector.h"
+//#include "cameraselector.h"
 #include "storagemanager.h"
 #include "settings.h"
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     StorageManager::checkFolders();
 
     qmlRegisterType<StorageManager>("StorageManager", 1, 0, "StorageManager");
-    qmlRegisterType<CameraSelector>("CameraSelector", 1, 0, "CameraSelector");
+    //qmlRegisterType<CameraSelector>("CameraSelector", 1, 0, "CameraSelector");
     QQmlApplicationEngine engine;
 
     QQmlContext *context = engine.rootContext();
