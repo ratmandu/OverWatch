@@ -7,12 +7,12 @@ CameraSelector::CameraSelector(QObject *parent) :
 
 void CameraSelector::setCameraObject(QObject *cam)
 {
-    // get the QCamera from the declarative camera's mediaObject property.
-    m_camera = qvariant_cast<QCamera*>(cam->property("mediaObject"));
+  // get the QCamera from the declarative camera's mediaObject property.
+  m_camera = qvariant_cast<QCamera*>(cam->property("mediaObject"));
 
-    // get the video device selector control
-    QMediaService *service = m_camera->service();
-    m_deviceSelector = qobject_cast<QVideoDeviceSelectorControl*>(service->requestControl(QVideoDeviceSelectorControl_iid));
+  // get the video device selector control
+  QMediaService *service = m_camera->service();
+  m_deviceSelector = qobject_cast<QVideoDeviceSelectorControl*>(service->requestControl(QVideoDeviceSelectorControl_iid));
 }
 
 QObject *CameraSelector::getCameraObject()
@@ -22,16 +22,17 @@ QObject *CameraSelector::getCameraObject()
 
 void CameraSelector::setSelectedCameraDevice(int cameraId)
 {
-    // A camera might already be started, make sure it's unloaded
-    m_camera->unload();
+  // A camera might already be started, make sure it's unloaded
+  qDebug() << m_camera->state() << m_camera->status();
+  m_camera->unload();
 
-    m_deviceSelector->setSelectedDevice(cameraId);
+  m_deviceSelector->setSelectedDevice(cameraId);
 
-    while (m_deviceSelector->selectedDevice() != cameraId);
+  while (m_deviceSelector->selectedDevice() != cameraId);
 
-    m_camera->load();
+  m_camera->load();
 
-    emit cameraSelected();
+  emit cameraSelected();
 }
 
 int CameraSelector::getSelectedCameraDevice()

@@ -49,6 +49,7 @@ ApplicationWindow {
     VideoPanel {
       id: videoPreview
       source: cameraSource.source
+//      source2: cameraSource.source2
 //      color: "gray"
       anchors.left: parent.left
       anchors.top: parent.top
@@ -58,8 +59,6 @@ ApplicationWindow {
 
     VideoSource {
       id: cameraSource
-
-
     }
 
     SettingsPanel {

@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QCamera>
 #include <QVideoDeviceSelectorControl>
+#include <QDebug>
 
 class CameraSelector : public QObject
 {
