@@ -4,11 +4,10 @@ import QtQuick.Controls 1.1
 import QtQml 2.2
 
 import StorageManager 1.0
-//import CameraSelector 1.0
 
 ApplicationWindow {
   visible: true
-  title: qsTr("Hello World")
+  title: qsTr("OverWatch Dashcam")
   color: "black"
 
   width: 1280
@@ -49,8 +48,6 @@ ApplicationWindow {
     VideoPanel {
       id: videoPreview
       source: cameraSource.source
-//      source2: cameraSource.source2
-//      color: "gray"
       anchors.left: parent.left
       anchors.top: parent.top
       width: parent.width - sideMenuBar.width

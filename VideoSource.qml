@@ -1,12 +1,9 @@
 import QtQuick 2.0
 import QtMultimedia 5.0
 
-import CameraSelector 1.0
-
 Item {
   id: videoSource
   property alias source : cameraSource
-  property alias selector : cameraSelector
 
   Camera {
     id: cameraSource
@@ -36,11 +33,4 @@ Item {
     videoRecorder.videoEncodingMode: CameraRecorder.ConstantQualityEncoding
     videoRecorder.outputLocation: "/sdcard/OverWatch/Videos/" + new Date() + ".mp4"
   }
-
-  CameraSelector {
-    id: cameraSelector
-    cameraObject: cameraSource
-  }
-
-
 }

@@ -32,7 +32,6 @@ Rectangle {
     Switch {
       id: autoRecordSwitch
       style: newSwitch
-//      onCheckedChanged: settings.setValue("AutoRecord", checked)
       checked: settings.getBool("AutoRecord", false)
     }
 
@@ -45,7 +44,6 @@ Rectangle {
     Switch {
       id: loopRecordSwitch
       style: newSwitch
-//      onCheckedChanged: settings.setValue("recordState/LoopRecord", checked)
       checked: settings.getBool("LoopRecord", true)
     }
 
@@ -263,11 +261,8 @@ Rectangle {
     settings.setInt("RecordingCamera", 0)
     settings.setInt("RecordingFramerate", frameRateCombo.currentIndex)
 
-//    cameraSource.selector.setSelectedCameraDevice(recordingCombo.currentIndex)
-//    cameraSource.selector.selectedCameraDevice = recordingCombo.currentIndex
     cameraSource.source.start()
     timers.recordStartTimer.start()
-//    recordingStartTimer.start()
   }
 
   function loadSettings() {
@@ -276,7 +271,6 @@ Rectangle {
     recordTimeSlider.value = settings.value("RecordingTime", 5)
     freeSpaceSlider.value = settings.value("SpaceToKeep", 1.5)
     resolutionCombo.currentIndex = settings.getInt("RecordingResolution", 3)
-//    recordingCombo.currentIndex = settings.getInt("RecordingCamera", 0)
     frameRateCombo.currentIndex = settings.getInt("RecordingFramerate", 0)
   }
 }
